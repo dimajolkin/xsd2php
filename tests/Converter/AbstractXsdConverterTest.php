@@ -2,16 +2,21 @@
 
 namespace GoetasWebservices\Xsd\XsdToPhp\Tests\Converter;
 
+use GoetasWebservices\XML\XSDReader\Schema\Schema;
+use GoetasWebservices\XML\XSDReader\Schema\Type\SimpleType;
+use GoetasWebservices\Xsd\XsdToPhp\AbstractConverter;
 use GoetasWebservices\Xsd\XsdToPhp\Naming\ShortNamingStrategy;
+use PHPUnit\Framework\Assert;
+use PHPUnit\Framework\TestCase;
 
-class AbstractXsdConverterTest extends \PHPUnit_Framework_TestCase
+class AbstractXsdConverterTest extends TestCase
 {
     /**
      * @var AbstractConverter
      */
     protected $converter;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->converter = $this->getMockForAbstractClass('GoetasWebservices\Xsd\XsdToPhp\AbstractConverter', [new ShortNamingStrategy()]);
     }

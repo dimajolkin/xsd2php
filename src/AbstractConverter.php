@@ -4,6 +4,7 @@ namespace GoetasWebservices\Xsd\XsdToPhp;
 
 use GoetasWebservices\XML\XSDReader\Schema\Element\ElementSingle;
 use GoetasWebservices\XML\XSDReader\Schema\Schema;
+use GoetasWebservices\XML\XSDReader\Schema\SchemaItem;
 use GoetasWebservices\XML\XSDReader\Schema\Type\ComplexType;
 use GoetasWebservices\XML\XSDReader\Schema\Type\ComplexTypeSimpleContent;
 use GoetasWebservices\XML\XSDReader\Schema\Type\SimpleType;
@@ -51,7 +52,7 @@ abstract class AbstractConverter
         });
     }
 
-    public function getTypeAlias($type, Schema $schemapos = null)
+    public function getTypeAlias(SchemaItem|Type $type, Schema $schemapos = null)
     {
         $schema = $schemapos ?: $type->getSchema();
 

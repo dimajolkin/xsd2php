@@ -2,9 +2,9 @@
 
 namespace GoetasWebservices\Xsd\XsdToPhp\Naming;
 
-use Doctrine\Common\Inflector\Inflector;
 use GoetasWebservices\XML\XSDReader\Schema\Item;
-use GoetasWebservices\XML\XSDReader\Schema\Type\Type;
+use GoetasWebservices\XML\XSDReader\Schema\Type\Typ;
+use GoetasWebservices\Xsd\XsdToPhp\Inflector\Inflector;
 
 abstract class AbstractNamingStrategy implements NamingStrategy
 {

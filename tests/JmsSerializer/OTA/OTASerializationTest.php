@@ -2,16 +2,17 @@
 
 namespace GoetasWebservices\Xsd\XsdToPhp\Tests\JmsSerializer\OTA;
 
-use Doctrine\Common\Inflector\Inflector;
+use Composer\InstalledVersions;
 use GoetasWebservices\XML\XSDReader\SchemaReader;
+use GoetasWebservices\Xsd\XsdToPhp\Inflector\Inflector;
 use GoetasWebservices\Xsd\XsdToPhp\Tests\Generator;
 use GoetasWebservices\Xsd\XsdToPhpRuntime\Jms\Handler\BaseTypesHandler;
 use GoetasWebservices\Xsd\XsdToPhpRuntime\Jms\Handler\XmlSchemaDateHandler;
 use JMS\Serializer\Handler\HandlerRegistryInterface;
-use PackageVersions\Versions;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
-class OTASerializationTest extends \PHPUnit_Framework_TestCase
+class OTASerializationTest extends TestCase
 {
     /**
      * @var Generator
@@ -26,7 +27,7 @@ class OTASerializationTest extends \PHPUnit_Framework_TestCase
     private static $namespace = 'OTA';
     private static $files = [];
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         if (!self::$files) {
             self::$files = self::getXmlFiles();
@@ -52,7 +53,7 @@ class OTASerializationTest extends \PHPUnit_Framework_TestCase
         self::$validator = self::$generator->getValidator($schemas);
     }
 
-    public static function tearDownAfterClass()
+    public static function tearDownAfterClass(): void
     {
         self::$generator->unRegisterAutoloader();
         self::$generator->cleanDirectories();
@@ -181,7 +182,7 @@ class OTASerializationTest extends \PHPUnit_Framework_TestCase
     public function testValidation($xml, $xsd, $class)
     {
         if (strpos($xml, 'OTA_UpdateRQ.xml') !== false) {
-            if (!class_exists(Versions::class) || version_compare(Versions::getVersion('goetas-webservices/xsd-reader'), '0.3.6', '<')) {
+            if (!class_exists(InstalledVersions::class) || version_compare(InstalledVersions::getVersion('goetas-webservices/xsd-reader'), '0.3.6', '<')) {
                 $this->markTestSkipped();
             }
         }
