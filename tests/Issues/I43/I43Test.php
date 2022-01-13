@@ -4,8 +4,9 @@ namespace GoetasWebservices\Xsd\XsdToPhp\Tests\Issues\I40;
 
 use GoetasWebservices\XML\XSDReader\SchemaReader;
 use GoetasWebservices\Xsd\XsdToPhp\Tests\Generator;
+use PHPUnit\Framework\TestCase;
 
-class I43Test extends \PHPUnit_Framework_TestCase
+class I43Test extends TestCase
 {
     /**
      * @group long
@@ -32,7 +33,7 @@ class I43Test extends \PHPUnit_Framework_TestCase
 
         $generator = new Generator($nss, [], __DIR__ . '/tmp');
 
-        list($phpClasses, $yamlItems, $validationItems) = $generator->getData([$schema]);
+        [$phpClasses, $yamlItems, $validationItems] = $generator->getData([$schema]);
         $generator->generate([$schema]);
 
         $this->assertGreaterThanOrEqual(24, count($yamlItems));

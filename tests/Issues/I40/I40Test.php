@@ -2,13 +2,17 @@
 
 namespace GoetasWebservices\Xsd\XsdToPhp\Tests\Issues\I40;
 
+use DMS\PHPUnitExtensions\ArraySubset\ArraySubsetAsserts;
 use GoetasWebservices\XML\XSDReader\SchemaReader;
 use GoetasWebservices\Xsd\XsdToPhp\Jms\YamlConverter;
 use GoetasWebservices\Xsd\XsdToPhp\Naming\ShortNamingStrategy;
 use GoetasWebservices\Xsd\XsdToPhp\Php\PhpConverter;
+use PHPUnit\Framework\TestCase;
 
-class I40Test extends \PHPUnit_Framework_TestCase
+class I40Test extends TestCase
 {
+    use ArraySubsetAsserts;
+
     public function testMissingClass()
     {
         $reader = new SchemaReader();
